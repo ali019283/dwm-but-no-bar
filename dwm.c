@@ -162,7 +162,6 @@ static void detach(Client *c);
 static void detachstack(Client *c);
 static Monitor *dirtomon(int dir);
 static void enternotify(XEvent *e);
-static void expose(XEvent *e);
 static void focus(Client *c);
 static void focusin(XEvent *e);
 static void focusmon(const Arg *arg);
@@ -241,7 +240,6 @@ static void (*handler[LASTEvent]) (XEvent *) = {
 	[ConfigureRequest] = configurerequest,
 	[DestroyNotify] = destroynotify,
 	[EnterNotify] = enternotify,
-	[Expose] = expose,
 	[FocusIn] = focusin,
 	[KeyPress] = keypress,
 	[MappingNotify] = mappingnotify,
@@ -682,12 +680,6 @@ enternotify(XEvent *e)
 	focus(c);
 }
 
-void
-expose(XEvent *e)
-{
-	Monitor *m;
-	XExposeEvent *ev = &e->xexpose;
-}
 void
 focus(Client *c)
 {
